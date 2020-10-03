@@ -41,57 +41,30 @@ class ExpectyRenderingSpec {
 
   @Test
   def object_apply(): Unit = {
-    if (isDotty) {
-      outputs("""assertion failed
+    outputs("""assertion failed
 
 List() == List(1, 2)
 |      |  |
 List() |  List(1, 2)
        false
     """) {
-        assert {
-          List() == List(1, 2)
-        }
-      }
-    } else {
-      outputs("""assertion failed
-
-List() == List(1, 2)
-       |  |
-       |  List(1, 2)
-       false
-    """) {
-        assert {
-          List() == List(1, 2)
-        }
+      assert {
+        List() == List(1, 2)
       }
     }
   }
 
   @Test
   def object_apply_2(): Unit = {
-    if (isDotty) {
-      outputs("""assertion failed
+    outputs("""assertion failed
 
 List(1, 2) == List()
 |          |  |
 List(1, 2) |  List()
            false
-    """) {
-        assert {
-          List(1, 2) == List()
-        }
-      }
-    } else {
-      outputs("""assertion failed
-
-List(1, 2) == List()
-|          |
-List(1, 2) false
-    """) {
-        assert {
-          List(1, 2) == List()
-        }
+  """) {
+      assert {
+        List(1, 2) == List()
       }
     }
   }
